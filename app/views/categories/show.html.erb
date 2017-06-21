@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1 style="color: <%= @category.color %>"><%= @category.name %></h1>
-<% @category.articles.each do |article| %>
+<% @category.articles.publicados.ultimos.each do |article| %>
   <h3><%= link_to article.title, article%></h3>
   <div>
-    <%= article.body %> - <%= link_to "Eliminar", article, method: :delete, class: "red" %>
+    <%= article.body %>
   </div>
 <% end %>
 

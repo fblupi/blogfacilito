@@ -1,11 +1,11 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :set_article, except: [:index, :new, :create]
-  before_action :authenticate_editor!, only: [:new, :create, :update]
-  before_action :authenticate_admin!, only: [:destroy]
+  before_action :authenticate_editor!, only: [:new, :create, :update, :edit]
+  before_action :authenticate_admin!, only: [:destroy, :publish, :unpublish]
 
   def index
-    @articles = Article.all
+    @articles = Article.publicados.ultimos
   end
 
   def show
@@ -43,6 +43,16 @@ class ArticlesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def publish
+    @article.publish!
+    redirect_to @article
+  end
+
+  def unpublish
+    @article.unpublish!
+    redirect_to @article
   end
 
   private
