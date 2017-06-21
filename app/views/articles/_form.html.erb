@@ -7,13 +7,21 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.text_field :title, placeholder: "Título", class:"form-control" %>
+    <%= f.text_field :title, placeholder: "Título del artículo", class:"form-control" %>
   </div>
   <div class="field">
     Portada: <%= f.file_field :cover %>
   </div>
   <div class="field">
     <%= f.text_area :body, placeholder: "Escribe aquí el artículo", style:"height:300px;", class:"form-control" %>
+  </div>
+  <div class="field">
+    <label>Categorías</label>
+    <% @categories.each do |category| %>
+      <div class="field">
+        <%= check_box_tag "categories[]", category.id %> <%= category.name %>
+      </div>
+    <% end %>
   </div>
   <div class="field">
     <%= f.submit "Guardar", class:"btn be-red white" %>

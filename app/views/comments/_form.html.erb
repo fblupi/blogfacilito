@@ -12,11 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body, id: :comment_body %>
+    <%= form.text_area :body, placeholder: "Escribe aquí su comentario", id: :comment_body, class:"form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Comentar", class:"btn be-red white" %>
   </div>
 <% end %>
