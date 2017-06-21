@@ -4,6 +4,9 @@
     Escrito por: <%= @article.user.email %>
   </p>
 <% end %>
+<p>
+  Visitas: <%= @article.visits_count %>
+</p>
 <div>
   <%= @article.body %>
 </div>
