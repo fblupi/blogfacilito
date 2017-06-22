@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_admin!, only: [:destroy, :publish, :unpublish]
 
   def index
-    @articles = Article.publicados.ultimos
+    @articles = Article.paginate(page: params[:page], per_page: 5).publicados.ultimos
   end
 
   def show
