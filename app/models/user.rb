@@ -7,4 +7,10 @@ class User < ApplicationRecord
   has_many :comments
   include PermissionsConcern
 
+  def avatar
+    email_addres = self.email.downcase
+    hash = Digest::MD5.hexdigest(email_addres)
+    image_src = "http://www.gravatar.com/avatar/#{hash}"
+  end
+
 end

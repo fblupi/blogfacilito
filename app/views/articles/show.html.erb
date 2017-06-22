@@ -1,34 +1,20 @@
-<h1><%= @article.title %></h1>
-<% unless @article.user.nil? %>
-  <p>
-    Escrito por: <%= @article.user.email %>
-  </p>
-<% end %>
-<div class="field">
-  <% @article.categories.each do |category| %>
-    <%= link_to category.name, category, style: "color: #{category.color}" %>
-  <% end %>
-</div>
-<div class="field">
-  <%= image_tag @article.cover.url(:thumb) %>
-</div>
-<p>
-  Visitas: <%= @article.visits_count %>
-</p>
-<div>
-  <%= Sanitize.fragment(@article.body, Sanitize::Config::RELAXED).html_safe %>
-</div>
-<div class="field">
-  <h3>Comentarios</h3>
-  <ul>
-    <% @article.comments.each do |comment| %>
-      <li>
-        <%= comment.body %> - <%= comment.user.email %>
-      </li>
-    <% end %>
-  </ul>
-  <%= render "comments/form" %>
-</div>
-<div>
-  <%= link_to "Editar", edit_article_path(@article) %>
-</div>
+<article class="bottom-space">
+  <div class="row center-xs">
+    <div class="col-xs-12 light-border col-md-7">
+      <h1 class="be-big blue"><%= @article.title %></h1>
+      <p class="text-right be-small">
+        <%= link_to "Atrás", articles_path, class: "underline" %> -
+        <span class="red"><%= @article.visits_count %> visita(s) </span> -
+        <% unless @article.user.nil? %>
+          Escrito por: <%= @article.user.email %>
+        <% end %>
+      </p>
+      <div class="text-justify">
+        <%= Sanitize.fragment(@article.body, Sanitize::Config::RELAXED).html_safe %>
+      </div>
+      <div>
+        <%= render "articles/comments" %>
+      </div>
+    </div>
+  </div>
+</article>

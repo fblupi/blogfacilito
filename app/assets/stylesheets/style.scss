@@ -47,7 +47,11 @@ a, a:visited {
 }
 
 .blue {
-  color: blue !important;
+  color: #6CF !important;
+}
+
+.grey {
+  color: #616161 !important;
 }
 
 .large-padding {
@@ -87,4 +91,32 @@ a, a:visited {
 
 .text-center {
   text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.be-big {
+  font-size: 2em;
+}
+
+.be-small {
+  font-size: 12px;
+}
+
+.bottom-space {
+  margin-bottom: 2em;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.light-border {
+
 }
