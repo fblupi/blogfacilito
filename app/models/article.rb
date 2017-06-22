@@ -10,6 +10,7 @@ class Article < ApplicationRecord
   validates :body, presence: true, length: { minimum: 10 }
   before_save :set_visits_count
   after_create :save_categories
+  after_create :send_mail
 
   has_attached_file :cover, styles: { medium: "1280x720", thumb: "800x600" }
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
@@ -40,6 +41,10 @@ class Article < ApplicationRecord
   end
 
   private
+
+  def send_mail
+    ArticleMailer.new_article(self).deliver_later
+  end
 
   def save_categories
     unless @categories.nil?
