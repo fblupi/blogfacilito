@@ -1,11 +1,9 @@
 <p id="notice"><%= notice %></p>
-
-<h1 style="color: <%= @category.color %>"><%= @category.name %></h1>
-<% @category.articles.publicados.ultimos.each do |article| %>
-  <h3><%= link_to article.title, article%></h3>
-  <div>
-    <%= article.body %>
+<div class="container" style="margin:0 auto;">
+  <h1 style="color: <%= @category.color %>"><%= @category.name %></h1>
+  <div class="row">
+    <%= render @category.articles %>
   </div>
-<% end %>
-
-<%= link_to 'Editar', edit_category_path(@category) %>
+  <hr/>
+  <%= link_to 'Editar', edit_category_path(@category) %>
+</div>

@@ -1,7 +1,10 @@
-<% @articles.each do |article| %>
-  <h1><%= link_to article.title, article%></h1>
-  <div>
-    <%= article.body %>
+<div class="container" style="margin:0 auto;">
+  <h1>Artículos</h1>
+  <div class="row">
+    <%= render @articles %>
   </div>
-<% end %>
-<%= will_paginate @articles %>
+  <hr/>
+  <div class="top-space">
+    <%= will_paginate @articles %>
+  </div>
+</div>

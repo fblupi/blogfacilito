@@ -3,7 +3,7 @@ html, body {
   font-family: 'Open Sans', sans-serif;
 }
 
-a,a:visited {
+a, a:visited {
   color: inherit;
   text-decoration: none;
 }
@@ -66,4 +66,25 @@ a,a:visited {
   display: block;
   padding: 10px 0px;
   font-size: 1.2em;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.article-height {
+  height: 150px;
+}
+
+.background-cover {
+  background-position: center;
+  background-size: cover;
+}
+
+.text-center {
+  text-align: center;
 }
