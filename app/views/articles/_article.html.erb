@@ -6,7 +6,7 @@
     </div>
     <div class="relative white text-center">
       <h2 style="padding:5px;"><%= link_to truncate(article.title, length: 40), article%></h2>
-      <p style="padding:5px;"><%= truncate(article.body, length: 50) %></p>
+      <p style="padding:5px;"><%= truncate(Nokogiri::HTML(article.body).text, length: 50) %></p>
     </div>
   </div>
 </div>

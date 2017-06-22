@@ -3,6 +3,6 @@
   <h1 style="color: <%= @category.color %>"><%= @category.name %></h1>
   <%= link_to 'Editar categoría', edit_category_path(@category), class: "btn red text-right", style: "display:block;" %>
   <div class="row">
-    <%= render @category.articles %>
+    <%= render @category.articles.publicados.ultimos %>
   </div>
 </div>

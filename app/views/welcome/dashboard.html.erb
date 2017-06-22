@@ -1,7 +1,7 @@
 <% @articles.each do |article| %>
   <h1><%= link_to article.title, article%></h1>
   <div>
-    <%= article.body %> -
+    <%= truncate(Nokogiri::HTML(article.body).text, length: 100) %> -
     <% if article.may_publish? %>
       <%= link_to "Publicar", "/articles/#{article.id}/publish", class: "blue", method: :put %>
     <% else %>
