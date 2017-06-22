@@ -60,3 +60,7 @@ gem 'paperclip'
 gem 'aasm'
 
 gem 'will_paginate'
+
+gem 'epic-editor-rails', :git => 'https://github.com/GioRosales/epic-editor-rails'
+
+gem 'sanitize'

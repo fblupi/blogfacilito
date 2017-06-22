@@ -1,19 +1,21 @@
 <% name ||= "Crear" %>
 <h1><%= name %> artículo</h1>
-<%= form_for(@article) do |f| %>
+<%= form_for(@article, html: { id: "articles-form" }) do |f| %>
   <% @article.errors.full_messages.each do |message| %>
     <div class="be-red white top-space">
       * <%= message %>
     </div>
   <% end %>
   <div class="field">
-    <%= f.text_field :title, placeholder: "Título del artículo", class:"form-control" %>
+    <%= f.text_field :title, placeholder: "Título del artículo", class: "form-control" %>
   </div>
   <div class="field">
     Portada: <%= f.file_field :cover %>
   </div>
   <div class="field">
-    <%= f.text_area :body, placeholder: "Escribe aquí el artículo", style:"height:300px;", class:"form-control" %>
+    <%= f.hidden_field :body, id: "body-textarea" %>
+    <%= f.hidden_field :markup_body, id: "markup-body-textarea" %>
+    <div id="epiceditor" style="height:350px;"></div>
   </div>
   <div class="field">
     <label>Categorías</label>
@@ -24,6 +26,20 @@
     <% end %>
   </div>
   <div class="field">
-    <%= f.submit "Guardar", class:"btn be-red white" %>
+    <%= f.submit "Guardar", class: "btn be-red white" %>
   </div>
 <% end %>
+
+<script>
+  var editor = new EpicEditor({
+    textarea: "markup-body-textarea",
+    file: {
+      name: "nuevo-articulo"
+    }
+  });
+  editor.load();
+  document.getElementById("articles-form").onsubmit = function() {
+    document.getElementById("body-textarea").value = editor.exportFile("nuevo-articulo", "html");
+    document.getElementById("markup-body-textarea").value = editor.exportFile("nuevo-articulo");
+  };
+</script>
