@@ -1,5 +1,6 @@
 <div class="container" style="margin:0 auto;">
   <h1>Artículos</h1>
+  <%= link_to "Crear artículo", new_article_path, class: "btn red text-right", style: "display:block;" %>
   <div class="row">
     <%= render @articles %>
   </div>

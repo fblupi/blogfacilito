@@ -1,9 +1,8 @@
 <p id="notice"><%= notice %></p>
 <div class="container" style="margin:0 auto;">
   <h1 style="color: <%= @category.color %>"><%= @category.name %></h1>
+  <%= link_to 'Editar categoría', edit_category_path(@category), class: "btn red text-right", style: "display:block;" %>
   <div class="row">
     <%= render @category.articles %>
   </div>
-  <hr/>
-  <%= link_to 'Editar', edit_category_path(@category) %>
 </div>

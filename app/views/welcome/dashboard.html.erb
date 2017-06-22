@@ -1,11 +1,11 @@
 <% @articles.each do |article| %>
   <h1><%= link_to article.title, article%></h1>
   <div>
-    <%= article.body %> - <%= link_to "Eliminar", article, method: :delete, class: "red" %> -
+    <%= article.body %> -
     <% if article.may_publish? %>
       <%= link_to "Publicar", "/articles/#{article.id}/publish", class: "blue", method: :put %>
     <% else %>
-      <%= link_to "Retirar", "/articles/#{article.id}/unpublish", class: "blue", method: :put %>
+      <%= link_to "Retirar", "/articles/#{article.id}/unpublish", class: "red", method: :put %>
     <% end %>
   </div>
 <% end %>
